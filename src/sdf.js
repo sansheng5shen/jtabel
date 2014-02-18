@@ -24,6 +24,20 @@ SDF.prototype = {
         var arrayDate = arguments[0];
         return parseInt(arrayDate[0], 10) + this.separator + parseInt(arrayDate[1], 10) + this.separator + parseInt(arrayDate[2], 10);
     },
+	isEqArray: function(a, b){
+		if(a.length === b.length){
+			var isEq = true;
+			for(var i = 0; i < a.length; i ++){
+				if(a[i] !== b[i]){
+					isEq = false;
+					break;
+				}
+			}
+			return isEq;
+		}else{
+			return false;
+		}
+	},
     getObjDate: function() {
         var arrayDate = arguments[0];
         return new Date(arrayDate[0], parseInt(arrayDate[1], 10) - 1, parseInt(arrayDate[2], 10));
@@ -130,6 +144,60 @@ SDF.prototype = {
 			et = tmp;
 		}
 		return [st, et];
+	},
+	isNatureMonth: function(r2Date, isStrict){
+		var st = r2Date[0], et = r2Date[1], _isStrict = isStrict || 0;
+		st = this.getRightDate(st);
+		et = this.getRightDate(et);
+		var swarp = this.swarp(st, et);
+		st = swarp[0];
+		et = swarp[1];
+
+		var con1 = this.isEqArray(this.getMonths(st), this.getMonths(et)),
+			con2 = this.getYears(st) === this.getYears(et),
+			con3 = this.getDay(st) === 1,
+			con4 = this.getDay(et) === this.getDays(et); 
+		if(con1 && con2 && con3 && con4){
+			return true;	
+		}	
+		if(!_isStrict){
+			if(this.isEqArray(st, this.minDate) && con1 && this.isEqArray(et, this.maxDate)){
+				return true;	
+			}else if(this.isEqArray(st, this.minDate) && con1 && con4){
+				return true;	
+			}else if(this.isEqArray(et, this.maxDate) && con1 && con3){
+				return true;	
+			}else{
+				return false;
+			}
+		}
+		return false;
+	},
+	isNatureWeek: function(r2Date, isStrict){
+		var st = r2Date[0], et = r2Date[1], _isStrict = isStrict || 0;
+		st = this.getRightDate(st);
+		et = this.getRightDate(et);
+		var swarp = this.swarp(st, et);
+		st = swarp[0];
+		et = swarp[1];
+
+		var con1 = this.getWeek(st) === 1,
+			con2 = this.getWeek(et) === 0,
+			con3 = (this.getStime(st) - this.getStime(et)) / 864e5 === 6;
+
+		if(con1 && con2 && con3){
+			return true;
+		}
+		if(!_isStrict){
+		
+			if( (this.getStime(st) - this.getStime(et)) / 864e5 <= 6){
+				return true;
+			}else{
+			
+			}
+		}
+		return false;
+				  
 	}
 };
 
