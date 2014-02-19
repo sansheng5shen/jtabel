@@ -149,12 +149,62 @@ module.exports = testCase({
 		test.deepEqual([[2014, 2, 13], [2014, 2, 15]], sdf1.getSameLengthDates([[2014, 2, 16], [2014, 2, 18]], -1));
 		test.deepEqual([[2014, 2, 18], [2014, 2, 18]], sdf1.getSameLengthDates([[2014, 2, 18], [2014, 2, 16]], 1));
 		test.deepEqual([[2014, 2, 17], [2014, 2, 18]], sdf1.getSameLengthDates([[2014, 2, 16], [2014, 2, 14]], 1));
-
 		test.deepEqual([[2014, 1, 16], [2014, 1, 19]], sdf1.getSameLengthDates([[2014, 1, 20], [2014, 1, 23]], -1));
 		test.deepEqual([[2014, 1, 15], [2014, 1, 16]], sdf1.getSameLengthDates([[2014, 1, 17], [2014, 1, 20]], -1));
 		test.expect(6);
 		test.done();
-	
+	},
+	'日期判断是不是自然月': function(test){
+        var opts = {
+            separator: '-',
+            date2Separator: '至',
+			minDate: '2014-02-02',
+			maxDate: '2014-02-18'
+        };
+		var sdf1 = new SDF(opts);
+		test.ok(sdf1.isNatureMonth([[2014, 2, 2], [2014, 2, 18]]));
+		test.ok(!sdf1.isNatureMonth([[2014, 2, 2], [2014, 2, 18]], 1));
+		test.ok(sdf1.isNatureMonth([[2014, 2, 1], [2014, 2, 18]]));
+		test.ok(sdf1.isNatureMonth([[2014, 2, 2], [2014, 2, 18]]));
+		test.ok(!sdf1.isNatureMonth([[2014, 2, 1], [2014, 2, 18]], 1));
+		
+		opts.minDate = '2014-01-02';
+		var sdf2 = new SDF(opts);
+		test.ok(!sdf2.isNatureMonth([[2014, 1, 2], [2014, 1, 31]], 1));
+		test.ok(sdf2.isNatureMonth([[2014, 1, 2], [2014, 1, 31]]));
+
+		opts.minDate = '2013-01-02';
+		var sdf3 = new SDF(opts);
+		test.ok(sdf3.isNatureMonth([[2013, 11, 1], [2013, 11, 30]]));
+		test.ok(sdf3.isNatureMonth([[2013, 11, 1], [2013, 11, 30]], 1));
+
+		test.expect(9);
+		test.done();
+			
+	},
+	'日期判断是不是自然周': function(test){
+        var opts = {
+            separator: '-',
+            date2Separator: '至',
+			minDate: '2014-02-02',
+			maxDate: '2014-02-18'
+        };
+		var sdf1 = new SDF(opts);
+		test.ok(sdf1.isNatureWeek([[2014, 2, 2], [2014, 2, 2]]));
+		test.ok(!sdf1.isNatureWeek([[2014, 2, 2], [2014, 2, 2]], 1));
+		test.ok(sdf1.isNatureWeek([[2014, 2, 17], [2014, 2, 18]]));
+		test.ok(!sdf1.isNatureWeek([[2014, 2, 17], [2014, 2, 18]], 1));
+		test.ok(sdf1.isNatureWeek([[2014, 2, 10], [2014, 2, 16]], 1));
+		test.ok(sdf1.isNatureWeek([[2014, 2, 10], [2014, 2, 16]]));
+
+		opts.minDate = '2014-02-17';
+		opts.maxDate = '2014-02-22';
+		var sdf2 = new SDF(opts);
+		test.ok(sdf2.isNatureWeek([[2014, 2, 17], [2014, 2, 22]]));
+		test.ok(!sdf2.isNatureWeek([[2014, 2, 17], [2014, 2, 22]], 1));
+
+		test.expect(8);
+		test.done();
 	},
 	'end': function(test){
 		test.ok(true);
