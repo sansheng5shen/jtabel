@@ -46,7 +46,11 @@ SDF.prototype = {
         return this.getObjDate(arguments[0]).getTime() - 0;
     },
     getWeek: function() {
-        return this.getObjDate(arguments[0]).getDay() - 0;
+        var weekDay = this.getObjDate(arguments[0]).getDay() - 0;
+        if (weekDay === 0) {
+            weekDay = 7;
+        }
+        return weekDay;
     },
     getDay: function() {
         return this.getObjDate(arguments[0]).getDate() - 0;
@@ -186,7 +190,7 @@ SDF.prototype = {
             et = _r2Date[1],
             _isStrict = isStrict || 0;
         var con1 = this.getWeek(st) === 1,
-            con2 = this.getWeek(et) === 0,
+            con2 = this.getWeek(et) === 7,
             con3 = (this.getStime(et) - this.getStime(st)) / 864e5 === 6;
         if (con1 && con2 && con3) {
             return true;
@@ -212,12 +216,12 @@ SDF.prototype = {
             et = _r2Date[1],
             _isStrict = isStrict || 0;
         if (dir < 0) {
-            var monday = this.getStepDay(st, -this.getWeek(st));
+            var monday = this.getStepDay(st, 1 - this.getWeek(st));
             if (this.getStime(this.minDate) > this.getStime(monday)) {
                 return false;
             }
-            if ((this.getStime(st) - this.getStime(this.minDate)) / 864e5 >= 6) {
-                return [this.getStepDay(monday, -6), this.getStepDay(monday, -1)];
+            if ((this.getStime(st) - this.getStime(this.minDate)) / 864e5 > 7) {
+                return [this.getStepDay(monday, -7), this.getStepDay(monday, -1)];
             } else {
                 if (!_isStrict) {
                     if (this.getStime(this.minDate) > this.getStime(this.getStepDay(monday, -1))) {
@@ -230,12 +234,12 @@ SDF.prototype = {
                 }
             }
         } else {
-            var sunday = this.getStepDay(et, 6 - this.getWeek(et));
+            var sunday = this.getStepDay(et, 7 - this.getWeek(et));
             if (this.getStime(sunday) > this.getStime(this.maxDate)) {
                 return false;
             }
-            if ((this.getStime(this.maxDate) - this.getStime(sunday)) / 864e5 >= 6) {
-                return [this.getStepDay(sunday, 1), this.getStepDay(sunday, 6)];
+            if ((this.getStime(this.maxDate) - this.getStime(sunday)) / 864e5 > 7) {
+                return [this.getStepDay(sunday, 1), this.getStepDay(sunday, 7)];
             } else {
                 if (!_isStrict) {
                     if (this.getStime(this.getStepDay(sunday, 1)) > this.getStime(this.maxDate)) {
@@ -254,7 +258,7 @@ SDF.prototype = {
             et = _r2Date[1],
             _isStrict = isStrict || 0;
         if (dir < 0) {
-            var monthFirstDay = this.getStepDay(st, -this.getDay(st));
+            var monthFirstDay = this.getStepDay(st, 1 - this.getDay(st));
             if (this.getStime(this.minDate) > this.getStime(monthFirstDay)) {
                 return false;
             }
@@ -275,7 +279,7 @@ SDF.prototype = {
                 }
             }
         } else {
-            var monthLastDay = this.getStepDay(et, 1);
+            var monthLastDay = [this.getYears(et), this.getMonths(et), this.getDays(et)];
             if (this.getStime(monthLastDay) > this.getStime(this.maxDate)) {
                 return false;
             }
@@ -299,32 +303,22 @@ SDF.prototype = {
     },
     getNatureMonth: function(r2Date, dir, isStrict) {
         var _r2Date = this.getRight2Date(r2Date);
-        var st = _r2Date[0],
-            et = _r2Date[1],
-            _isStrict = isStrict || 0;
-        if (dir < 0) {
-
-
+        var hasNatureMonth = this.hasNatureMonth(_r2Date, dir, isStrict);
+        if (!hasNatureMonth) {
+            return _r2Date;
         } else {
-
+            return hasNatureMonth;
         }
-
     },
     getNatureWeek: function(r2Date, dir, isStrict) {
         var _r2Date = this.getRight2Date(r2Date);
-        var st = _r2Date[0],
-            et = _r2Date[1],
-            _isStrict = isStrict || 0;
-        if (dir < 0) {
-
-
+        var hasNatureWeek = this.hasNatureWeek(_r2Date, dir, isStrict);
+        if (!hasNatureWeek) {
+            return _r2Date;
         } else {
-
+            return hasNatureWeek;
         }
     }
+
 };
-
-
-
-
 exports.SDF = SDF;
