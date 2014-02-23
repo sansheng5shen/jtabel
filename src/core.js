@@ -38,7 +38,7 @@ Calendar.prototype = {
 
 		that.showPosition = opts.showPosition || 'left';
 
-		that.parentContainer = opts.parentContainer || $('body');
+		that.parentContainer = opts.parentContainer;
 
 		that.calendarId = 'calendar_' + that.now + '_' + that.triggerNodeId;
 		that.aPrefix = that.calendarId + '_a_';
@@ -143,7 +143,11 @@ Calendar.prototype = {
 	},
 	_create : function() {
 		var that = this, opts = that.opts;
-		that.parentContainer.append(that._getContinerHtml());
+		if(that.parentContainer){
+			that.parentContainer.empty().append(that._getContinerHtml());
+		}else{
+			$('body').append(that._getContinerHtml());
+		}
 		that.containerNode = $('#' + that.calendarId);
 		that.mainEl = $('div.widget-calendar-main', that.containerNode);
 		that.footerEl = $('div.widget-calendar-footer', that.containerNode);
@@ -822,7 +826,7 @@ Calendar.prototype = {
 	},
 	_setPostion : function() {
 		var that = this, triggerInputEl = that.triggerInputEl;
-		if (triggerInputEl.length) {
+		if (triggerInputEl.length && !that.parentContainer) {
 			var tn_offset = triggerInputEl.offset(), tn_height = parseInt(triggerInputEl.outerHeight(), 10), top, left;
 			top = tn_offset.top + tn_height;
 			if (that.showPosition === "right") {
