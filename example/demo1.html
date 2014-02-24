@@ -11,7 +11,8 @@
 <h1>3排选区间</h1>
 <hr/>
 <input type="text" id="inputId1" style="width:150px;height:18px;margin:0 0 200px 100px;"/>
-<select><option>你能看见我不</option><option>ddddd</option></select>
+<br />
+<select style="margin-left:150px;margin-top:-100px;"><option>你能看见我不</option><option>ddddd</option></select>
 
 <h1>2排选区间</h1>
 <hr/>
@@ -24,6 +25,26 @@
 <h1>按周选</h1>
 <hr/>
 <input type="text" id="inputId4" style="width:150px;height:18px;margin:0 0 300px 100px;"/>
+
+<h1>日历添加到其它容器</h1>
+<hr/>
+<input type="text" id="inputId5" style="width:150px;height:18px;margin:0 0 300px 100px;"/>
+<br />
+<select style="margin-left:150px;margin-top:-100px;"><option>你能看见我不</option><option>ddddd</option></select>
+
+
+
+<div style="height:300px;"></div>
+
+<div id="mainContainer" style="position: absolute;display:none;padding:15px;border:1px solid green;width:600px">
+	<ul style="width:600px;height:40px;border-bottom:2px solid #666666;">
+		<li id="tabWeek" style="cursor: pointer;float:left;height:30px;width:100px;margin:2px;border:1px solid #ccc;text-align: center;line-height:30px;">按照周</li>
+		<li id="tabMonth" style="cursor: pointer;float:left;height:30px;width:100px;margin:2px;border:1px solid #ccc;text-align: center;line-height:30px;">按照月</li>
+	</ul>
+	<div id="weekContent" style="width:600px;display:none;"></div>
+	<div id="monthContent" style="width:600px;display:none;">month</div>
+</div>
+
 
 <script type="text/javascript" src="../src/sdf.js"></script>
 <script type="text/javascript" src="../src/core.js"></script>
@@ -70,6 +91,44 @@
 	new Calendar(opt4);
 	
 	
+	$(function(){
+		$('#tabWeek').on('click', function(){
+			$('#tabWeek').css({'background-color' :'#999999', 'color': '#FFFFFF'});
+			$('#tabMonth').css({'background-color' :'#fff', 'color': '#000'});
+			$('#weekContent').show();
+			$('#monthContent').hide();
+			var opt5 = {
+				today: '2014-02-20',
+				maxDate: '2014-02-20',
+				minDate: '2010-01-20',
+				selectDate: '2014-02-20至2014-02-18',
+				id: 'inputId5',
+				isSelectWeek: 1,
+				isReadOnly: 1,
+				panelCounts: 3,
+				isClickDocClose: 1,
+				parentContainer : $('#weekContent')
+			}
+			var calendar = new Calendar(opt5);
+			calendar.containerNode.trigger('calendar.event.show');
+			calendar.containerNode.on('calendar.event.hidecb', function(){
+                $('#mainContainer').hide();
+            });
+		});
+		$('#tabMonth').on('click', function(){
+			$('#tabMonth').css({'background-color' :'#999999', 'color': '#FFFFFF'});
+			$('#tabWeek').css({'background-color' :'#fff', 'color': '#000'});
+			$('#weekContent').hide();
+			$('#monthContent').show();
+		});
+		$('#inputId5').on({
+			'focus click': function(){
+				$('#mainContainer').css({'left': $(this).offset().left, 'top': $(this).offset().top + 20}).show();
+				$('#tabWeek').trigger('click');
+			}
+		
+		});	
+	});
 </script>
 </body>
 </html>

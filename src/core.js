@@ -38,7 +38,7 @@ Calendar.prototype = {
 
 		that.showPosition = opts.showPosition || 'left';
 
-		that.parentContainer = opts.parentContainer || $('body');
+		that.parentContainer = opts.parentContainer;
 
 		that.calendarId = 'calendar_' + that.now + '_' + that.triggerNodeId;
 		that.aPrefix = that.calendarId + '_a_';
@@ -143,7 +143,11 @@ Calendar.prototype = {
 	},
 	_create : function() {
 		var that = this, opts = that.opts;
-		that.parentContainer.append(that._getContinerHtml());
+		if(that.parentContainer){
+			that.parentContainer.empty().append(that._getContinerHtml());
+		}else{
+			$('body').append(that._getContinerHtml());
+		}
 		that.containerNode = $('#' + that.calendarId);
 		that.mainEl = $('div.widget-calendar-main', that.containerNode);
 		that.footerEl = $('div.widget-calendar-footer', that.containerNode);
@@ -509,7 +513,7 @@ Calendar.prototype = {
 	_defineEvent: function(){
 	    var that = this;
 	    that.containerNode.on('calendar.event.show', function(){
-	        that._show();
+	        that._show();	        
 	    });
 	    that.containerNode.on('calendar.event.hide', function(){
             that._hide();
@@ -801,32 +805,41 @@ Calendar.prototype = {
 		that.errorTipEl.text('').hide();
 	},
 	_fixedIe6 : function() {
-		var that = this, cw = 26 * 2 + 176 * that.panelCounts;
+		var that = this, cw = that._getContainerWidth();
 		if ($.browser.msie && ($.browser.version === "6.0" || $.browser.version === "7.0")){
 		    that.footerEl.css({'width' : cw});
 		    that.containerNode.css({'width' : cw});
 		}
 		if ($.browser.msie && $.browser.version === "6.0") {
-			that.iframeNode = $("#frame-" + that.calendarId);
+			that.iframeNode = $("#frame_" + that.calendarId);
 			if (!that.iframeNode.length) {
 				var h = that.containerNode.css('height');
 				var left = that.containerNode.css('left'), top = that.containerNode.css('top');
-				var iframeHtml = '<iframe id="frame-' + that.calendarId + '" ' 
+				var iframeHtml = '<iframe id="frame_' + that.calendarId + '" ' 
 				+ 'style="filter:alpha(opacity=20);position:absolute;' 
 				+ 'z-index:1;width:' + cw + 'px;height:' + h + ';left:' + left + ';top:' + top + ';"></iframe>';
 				var iframeEl = $(iframeHtml);
-				iframeEl.insertAfter(that.triggerInputEl);
+				if(that.parentContainer){
+				    that.parentContainer.append(iframeEl);
+				}else{
+				    iframeEl.insertAfter(that.triggerInputEl);
+				}
 				that.iframeNode = iframeEl;
 			}
 		}
 	},
+	_getContainerWidth: function(){
+	    return 26 * 2 + 176 * this.panelCounts;
+	},
 	_setPostion : function() {
 		var that = this, triggerInputEl = that.triggerInputEl;
-		if (triggerInputEl.length) {
+		if (triggerInputEl.length && !that.parentContainer) {
 			var tn_offset = triggerInputEl.offset(), tn_height = parseInt(triggerInputEl.outerHeight(), 10), top, left;
 			top = tn_offset.top + tn_height;
 			if (that.showPosition === "right") {
-				left = tn_offset.left + parseInt(triggerInputEl.outerWidth(), 10) - that.getContainerWidth() - parseInt(that.containerNode.css("border-left-width"), 10) + offset[1];
+				left = tn_offset.left + parseInt(triggerInputEl.outerWidth(), 10) - 
+				    that._getContainerWidth() - parseInt(that.containerNode.css('border-left-width'), 10) -
+				    parseInt(that.containerNode.css('paddingLeft'), 10) - parseInt(that.containerNode.css('paddingRight'), 10);
 			} else {
 				left = tn_offset.left;
 			}
@@ -862,6 +875,7 @@ Calendar.prototype = {
         }
         !!that.iframeNode && that.iframeNode.hide();
 		that.containerNode.hide();
+		that.containerNode.trigger('calendar.event.hidecb');
 	},
 	_show : function() {
 		var that = this;
@@ -875,6 +889,7 @@ Calendar.prototype = {
 		that._setPostion();
 		that._fixedIe6();
 		that.containerNode.show();
+		that.containerNode.trigger('calendar.event.showcb');
 	},
 	destory : function() {
 		var that = this;

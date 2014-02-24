@@ -23,7 +23,7 @@ a:focus { outline: none; }
 a:hover, a:active { outline:0; }
 
 
-.widget-calender-container{position: absolute;z-index: 999;display:none;background-color:#f7f7f7;}
+.widget-calender-container{position: absolute;z-index: 9;display:none;background-color:#f7f7f7;}
 .widget-calender-container .widget-calendar-btnHover{ background-color: #0387CF; color: #FFFFFF;color:#ffffff;line-height: 25px;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-footerBtn{height:26px;width:92px;margin: 0 auto;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-submit,
@@ -43,18 +43,11 @@ a:hover, a:active { outline:0; }
 .widget-calender-container .widget-calendar-main-week .leftWeek li.hovered{background-color:#d6d6d6;}
 .widget-calender-container .widget-calendar-main-week .leftWeek li.selected{background-color:#b5b5b5;color:#fff;}
 .widget-calender-container .widget-calendar-main-week .rightWeek{float:left;height: 206px;}
-.widget-calender-container .widget-calendar-main-week .rightWeek .monthUl{height: 166px;width:296px;margin:20px 11px;}
-.widget-calender-container .widget-calendar-main-week .rightWeek .monthUl .monthLi{line-height:44px;cursor:pointer;text-align:center;color:#000;float:left; height: 44px;width:44px;margin:5px 15px 5px 15px;background:url("calendarMonth.png") 0 0 transparent;display:inline-block;}
-.widget-calender-container .widget-calendar-main-week .rightWeek .monthUl .hovered{background-position: -0px -44px;}
-.widget-calender-container .widget-calendar-main-week .rightWeek .monthUl .selected{background-position: -44px -44px;color:#fff;}
-.widget-calender-container .widget-calendar-main-week .rightWeek .monthUl .enabled{background-position: -44px 0;color:#cccccc; cursor: default;}
-
 .widget-calender-container .widget-calendar-left .widget-calendar-prevYearBtn{border:1px solid #b6b6b6;width:24px;height: 24px;margin-bottom:4px;}
 .widget-calender-container .widget-calendar-left .widget-calendar-prevYearBtn .prevYearBtn{width:24px;height: 24px;background:url("calendar24.png") 0 0 transparent;display:inline-block;}
 .widget-calender-container .widget-calendar-left .hovered .prevYearBtn{background-position: 0px -25px;}
 .widget-calender-container .widget-calendar-left .selected .prevYearBtn{background-position: 0px -50px;}
 .widget-calender-container .widget-calendar-left .disabled .prevYearBtn{background-position: 0px -75px;cursor: default;}
-
 .widget-calender-container .widget-calendar-left .widget-calendar-prevMonthBtn{border:1px solid #b6b6b6;width:24px;height: 169px;background-color:#ffffff;cursor: pointer;}
 .widget-calender-container .widget-calendar-left .widget-calendar-prevMonthBtn .prevBtn{width:24px;height: 24px;background:url("calendar24.png") -24px 0 transparent;display:inline-block;margin-top:73px;}
 .widget-calender-container .widget-calendar-left .hovered{background-color:#EFEFEF;}
@@ -63,7 +56,6 @@ a:hover, a:active { outline:0; }
 .widget-calender-container .widget-calendar-left .selected .prevBtn{background-position: -24px -50px;}
 .widget-calender-container .widget-calendar-left .disabled{background-color:#F7F7F7;cursor: default;}
 .widget-calender-container .widget-calendar-left .disabled .prevBtn{background-position: -24px -75px;cursor: default;}
-
 .widget-calender-container .widget-calendar-right .widget-calendar-nextYearBtn{border:1px solid #b6b6b6;width:24px;height: 24px;margin-bottom:4px;}
 .widget-calender-container .widget-calendar-right .widget-calendar-nextYearBtn .nextYearBtn{width:24px;height: 24px;background:url("calendar24.png") -72px 0 transparent;display:inline-block;}
 .widget-calender-container .widget-calendar-right .hovered .nextYearBtn{background-position: -72px -25px;}
@@ -71,14 +63,12 @@ a:hover, a:active { outline:0; }
 .widget-calender-container .widget-calendar-right .disabled .nextYearBtn{background-position: -72px -75px;cursor: default;}
 .widget-calender-container .widget-calendar-right .widget-calendar-nextMonthBtn{border:1px solid #b6b6b6;width:24px;height: 169px;background-color:#ffffff;cursor: pointer;}
 .widget-calender-container .widget-calendar-right .widget-calendar-nextMonthBtn .nextBtn{width:24px;height: 24px;background:url("calendar24.png") -48px 0 transparent;display:inline-block;margin-top:73px;}
-
 .widget-calender-container .widget-calendar-right .hovered{background-color:#EFEFEF;}
 .widget-calender-container .widget-calendar-right .hovered .nextBtn{background-position: -48px -25px;}
 .widget-calender-container .widget-calendar-right .selected{background-color:#DFDFDF;}
 .widget-calender-container .widget-calendar-right .selected .nextBtn{background-position: -48px -50px;}
 .widget-calender-container .widget-calendar-right .disabled{background-color:#F7F7F7;cursor: default;}
 .widget-calender-container .widget-calendar-right .disabled .nextBtn{background-position: -48px -75px;cursor: default;}
-
 .widget-calender-container .widget-calendar-content{height: 206px;float:left;}
 .widget-calender-container .widget-calendar-content .widget-calendar-item{float:left;width:170px;margin:0 3px;_display:inline;}
 .widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-title{text-align: center;line-height:30px;float: left;width:170px;} 
@@ -93,36 +83,21 @@ a:hover, a:active { outline:0; }
 .widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi{float:left;height:24px;line-height:24px;text-align: center;width:24px;} 
 .widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a{display: inline-block;height:24px;line-height:24px;text-align: center;width:24px;}
 .widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.notTime{cursor: default;}
-.widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.aSelected{background-color: #F68B17;color:#ffffff;font-weight: bold;}
-.widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.aHovered{background-color: #0387CF;color:#ffffff;}
+.widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.aSelected{line-height:24px;height:24px;width:24px;background-color:#1c91db;font-weight: bold;color:#fff;}
+.widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.aHovered{line-height:24px;height:24px;width:24px;background-color:#d0eafb;color:#000;}
 .widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.aDisabled{cursor: default;color:#cccccc;}
-.widget-calender-container .widget-calendar-content .widget-calendar-shortCuts{float:left;width:136px;margin:5px;padding:30px 20px;}
-.widget-calender-container .widget-calendar-content .widget-calendar-shortCuts li{float:left;width:58px;line-height:25px;padding:0 5px;text-align: center;}
-.widget-calender-container .widget-calendar-content .widget-calendar-shortCuts li.hovered{background-color: #EEE8D9;}
-.widget-calender-container .widget-calendar-content .widget-calendar-shortCuts li.selected{background-color: #0387CF;color:#FFFFFF;}
-.widget-calender-container .widget-calendar-content .widget-calendar-shortCuts li a{line-height:25px;}
-.widget-calender-container .widget-calendar-content .widget-calendar-compareDates{float:left;width:136px;margin:5px;padding:30px 20px;}
-.widget-calender-container .widget-calendar-content .widget-calendar-compareDates li{float:left;width:116px;line-height:25px;text-align: center;}
-.widget-calender-container .widget-calendar-content .widget-calendar-compareDates li.hovered{background-color: #EEE8D9;}
-.widget-calender-container .widget-calendar-content .widget-calendar-compareDates li.selected{background-color: #0387CF;color:#FFFFFF;}
-.widget-calender-container .widget-calendar-content .widget-calendar-compareDates li a{line-height:25px;}
-.widget-calender-container .widget-calendar-footer{background-color:#FFFFFF;zoom:1;overflow:hidden;}
+.widget-calender-container .widget-calendar-footer{background-color:#FFFFFF;zoom:1;overflow:hidden;border-top:1px solid #E3E3E3;padding:6px 0 6px 0;line-height:26px;height:26px;}
+.widget-calender-container .errorTipBr{float:none;height: 26px;color:#ff0000;line-height: 26px;clear:both;background-color:#FFFFFF;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input{float:left;height: 26px;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input .spanTxt1{float:left;height: 26px;line-height: 26px;margin-right:5px;display:inline-block;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input .spanTxt2{float:left;height: 26px;line-height: 26px;}
-.widget-calender-container .widget-calendar-footer .widget-calendar-input .timeInput{float:left;
-    height: 20px;width:70px;border:none;padding:2px 7px;border:1px solid #b6b6b6;}
+.widget-calender-container .widget-calendar-footer .widget-calendar-input .timeInput{float:left;height: 20px;width:70px;border:none;padding:2px 7px;border:1px solid #b6b6b6;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input .selected{border:1px solid #1C91DB;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input .errored{border:1px solid red;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input .disabled{border:1px solid #CCCCCC;color:#ccc;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input .timeInputSt{margin-right:5px;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-input .timeInputEt{margin-left:5px;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-errorTip{margin-left:10px;float:left;height: 26px;color:#ff0000;line-height: 26px;}
-.widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.aSelected{line-height:24px;height:24px;width:24px;background-color:#1c91db;}
-.widget-calender-container .widget-calendar-content .widget-calendar-item .calendar-colLi a.aHovered{line-height:24px;height:24px;width:24px;background-color:#d0eafb;color:#000;}
-.widget-calender-container .widget-calendar-footer{border-top:1px solid #E3E3E3;padding:6px 0 6px 0;line-height:26px;height:26px;}
-.widget-calender-container .errorTipBr{float:none;height: 26px;color:#ff0000;line-height: 26px;clear:both;background-color:#FFFFFF;}
-
 .widget-calender-container .widget-calendar-footer .widget-calendar-footerBtn{float:right;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-submit{height:26px;line-height:26px;height:26px;width:40px;background-color:#f84f1b;color:#FFFFFF;margin-right:10px;}
 .widget-calender-container .widget-calendar-footer .widget-calendar-close{height:24px;line-height:24px;height:24px;width:40px;background-color:#FFFFFF;color:#545454;border:1px solid #bcbcbc;}
@@ -130,6 +105,7 @@ a:hover, a:active { outline:0; }
 .widget-calender-container .widget-calendar-footer .widget-calendar-close .closeBtn{line-height: 24px; display: inline-block;width: 40px;}
 .widget-calender-container .widget-calendar-footer .hovered .submitBtn{background-color:#f8251b;}
 .widget-calender-container .widget-calendar-footer .hovered .closeBtn{background-color:#dfdfdf;}
+
 .widget-calender-container{border:1px solid #b6b6b6;padding:10px;
     -moz-box-shadow: 2px 2px 10px #909090;-webkit-box-shadow: 2px 2px 10px #909090;box-shadow:2px 2px 10px #909090;
 }
