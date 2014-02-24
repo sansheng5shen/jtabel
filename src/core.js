@@ -17,7 +17,7 @@ Calendar.prototype = {
         //日历面板数
         that.panelCounts = opts.panelCounts || 1;
         //按照月翻日历步长
-        that.monStep = opts.monthStep || 1;
+        that.monthStep = opts.monthStep || 1;
         //整月选择
         that.isSelectAllMonth = typeof opts.isSelectAllMonth === "undefined" ? 1 : opts.isSelectAllMonth;
         //按周选
@@ -205,7 +205,7 @@ Calendar.prototype = {
     _render: function(rDate) {
         var that = this, cHtml = [], contentEl = that.contentEl;
         for (var k = 0; k < that.panelCounts; k++) {
-            cHtml.push(that._renderDateItem(that.sdf.getStepMonth(rDate, -k * that.monStep)));
+            cHtml.push(that._renderDateItem(that.sdf.getStepMonth(rDate, -k * that.monthStep)));
         }
         cHtml = cHtml.reverse();
         contentEl.empty().append(cHtml.join(""));
@@ -528,6 +528,7 @@ Calendar.prototype = {
             });
             if (!errored) {
                 that.containerNode.trigger("calendar.event.hide");
+                that.containerNode.trigger("calendar.event.submit", [that._dateFormater(that.sdf.getArrayDateByString(that.selectDate))]);
             }
         });
         that.cancleEl.off("click").on("click", function() {
@@ -830,6 +831,7 @@ Calendar.prototype = {
             that._updateInput();
         }
         !!that.iframeNode && that.iframeNode.hide();
+        that.containerNode.trigger("calendar.event.hidebcb");
         that.containerNode.hide();
         that.containerNode.trigger("calendar.event.hidecb");
     },
@@ -844,6 +846,7 @@ Calendar.prototype = {
         }
         that._setPostion();
         that._fixedIe6();
+        that.containerNode.trigger("calendar.event.showbcb");
         that.containerNode.show();
         that.containerNode.trigger("calendar.event.showcb");
     },
