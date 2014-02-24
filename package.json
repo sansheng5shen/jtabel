@@ -1,8 +1,8 @@
 {
   "name": "calendar",
   "version": "0.6.0",
-  "root": "aliyun.cnzz.widget.Calendar",
-  "description": "新增按照自然周选择",
+  "root": "ui.Calendar",
+  "description": "基础日历组件",
   "author": "xuanxiao",
   "devDependencies": {
   	"grunt": "~0.4.0",

@@ -1,125 +1,34 @@
-// http://jshint.com/docs/options/
 {
-    // JSHint Default Configuration File (as on JSHint website)
-    // See http://jshint.com/docs/ for more details
-    "maxerr"        : 500,       // {int} Maximum error before stopping
+	"curly": true,
+	"expr": true,
+	"newcap": false,
+	"regexdash": true,
+	"trailing": true,
+	"undef": true,
+	
+	"unused": false,
+	
+	"maxerr": 100,
 
-    // Enforcing
-        
-	//如果是true，则禁止使用位运算符
-    "bitwise"       : true,     // true: Prohibit bitwise operators (&, |, ^, etc.) 
-    // 驼峰标示
-    "camelcase"     : false,    // true: Identifiers must be in camelCase
-	//如果是true，则要求在if/while的模块时使用TAB结构
-    "curly"         : true,     // true: Require {} for every new block or scope
-	//如果是true，则要求在所有的比较时使用===和!==
-    "eqeqeq"        : true,     // true: Require triple equals (===) for comparison
-	//如果是true，则不允许for in在没有hasOwnProperty时使用
-    "forin"         : true,     // true: Require filtering for..in loops with obj.hasOwnProperty()
-	//如果是true，则要求“立即调用”(immediate invocations)必须使用括号包起来
-    "immed"         : false,    // true: Require immediate invocations to be wrapped in parens e.g. `(function () { } ());`
-    "indent"        : 4,        // {int} Number of spaces to use for indentation
-    //true 表示变量或者函数必须定义
-    "latedef"       : false,    // true: Require variables/functions to be defined before being used
-	//如果是true，则构造函数必须大写
-    "newcap"        : false,    // true: Require capitalization of all constructor functions e.g. `new F()`
-	//如果是true，则不允许使用arguments.caller和arguments.callee
-    "noarg"         : true,     // true: Prohibit use of `arguments.caller` and `arguments.callee`
-	//如果是true，则不允许使用空函数
-    "noempty"       : true,     // true: Prohibit use of empty blocks
-	//如果是true，则不允许不做赋值的构造函数，例如new UIWindow();
-    "nonew"         : false,    // true: Prohibit use of constructors for side-effects (without assignment)
-    // 禁止使用 ++ --
-    "plusplus"      : false,    // true: Prohibit use of `++` & `--`
-    // 引号使用
-    "quotmark"      : false,    // Quotation mark consistency:
-                                //   false    : do nothing (default)
-                                //   true     : ensure whatever is used is consistent
-                                //   "single" : require single quotes
-                                //   "double" : require double quotes
-	//如果是ture，则所有的局部变量必须先声明之后才能使用
-    "undef"         : true,     // true: Require all non-global variables to be declared (prevents global leaks)
-    // 如果为真，JSHint会要求所有定义的变量都的使用
-    "unused"        : true,     // true: Require all defined variables be used
-	//如果是true，则需要使用strict的用法，详见http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
-    "strict"        : true,     // true: Requires all functions run in ES5 Strict Mode
-    //如果为真，JSHint会禁止结尾使用空格
-    "trailing"      : false,    // true: Prohibit trailing whitespaces
-        
-    "maxparams"     : false,    // {int} Max number of formal params allowed per function
-    "maxdepth"      : false,    // {int} Max depth of nested blocks (within functions)
-    "maxstatements" : false,    // {int} Max number statements per function
-    "maxcomplexity" : false,    // {int} Max cyclomatic complexity per function
-    "maxlen"        : false,    // {int} Max number of characters per line
+	"eqnull": true,
+	"evil": true,
+	"sub": true,
 
-    // Relaxing
-    
-	// 是否使用自动插入分号
-    "asi"           : false,     // true: Tolerate Automatic Semicolon Insertion (no semicolons)
-	//如果是true，则允许在if/for/while的条件中使用=做赋值操作
-    "boss"          : false,     // true: Tolerate assignments where comparisons would be expected
-	//如果是true，则允许使用debugger的语句
-    "debug"         : false,     // true: Allow debugger statements e.g. browser breakpoints.
-	//如果是true，则允许使用== null
-    "eqnull"        : false,     // true: Tolerate use of `== null`
-    // 如果为真，JSHint会允许使用es5语法
-    "es5"           : false,     // true: Allow ES5 syntax (ex: getters and setters)
-    "esnext"        : false,     // true: Allow ES.next (ES6) syntax (ex: `const`)
-    "moz"           : false,     // true: Allow Mozilla specific syntax (extends and overrides esnext features)
-                                 // (ex: `for each`, multiple try/catch, function expression…)
-	//如果是true，则允许使用eval方法/
-    "evil"          : false,     // true: Tolerate use of `eval` and `new Function()`
-    "expr"          : false,     // true: Tolerate `ExpressionStatement` as Programs
-    "funcscope"     : false,     // true: Tolerate defining variables inside control statements"
-    "globalstrict"  : true,     // true: Allow global "use strict" (also enables 'strict')
-    "iterator"      : false,     // true: Tolerate using the `__iterator__` property
-    "lastsemic"     : false,     // true: Tolerate omitting a semicolon for the last statement of a 1-line block
-	//如果是true，则不检查换行，那么自动插入分号的选项必须开启。
-    "laxbreak"      : false,     // true: Tolerate possibly unsafe line breakings
-    "laxcomma"      : false,     // true: Tolerate comma-first style coding
-    "loopfunc"      : false,     // true: Tolerate functions being defined in loops
-    "multistr"      : false,     // true: Tolerate multi-line strings
-    "proto"         : false,     // true: Tolerate using the `__proto__` property
-    "scripturl"     : false,     // true: Tolerate script-targeted URLs
-    //true 允许 混合 tabs/spaces
-    "smarttabs"     : true,     // true: Tolerate mixed tabs/spaces when used for alignment
-    "shadow"        : false,     // true: Allows re-define variables later in code e.g. `var x=1; x=2;`
-	//如果是true，则允许使用各种写法获取属性(一般使用.来获取一个对象的属性值)
-    "sub"           : true,     // true: Tolerate using `[]` notation when it can still be expressed in dot notation
-    "supernew"      : false,     // true: Tolerate `new function () { ... };` and `new Object;`
-    //true 允许 在没有构造方法的函数里面使用this
-    "validthis"     : false,     // true: Tolerate using this in a non-constructor function
+	"browser": true,
+	"wsh": true,
 
-    // Environments
-    "browser"       : true,     // Web Browser (window, document, etc)
-    "couch"         : false,    // CouchDB
-    "devel"         : true,     // Development/debugging (alert, confirm, etc)
-    "dojo"          : false,    // Dojo Toolkit
-    "jquery"        : false,    // jQuery
-    "mootools"      : false,    // MooTools
-    "node"          : false,    // Node.js
-    "nonstandard"   : false,    // Widely adopted globals (escape, unescape, etc)
-    "prototypejs"   : false,    // Prototype and Scriptaculous
-    "rhino"         : false,    // Rhino
-    "worker"        : false,    // Web Workers
-    "wsh"           : false,    // Windows Scripting Host
-    "yui"           : false,    // Yahoo User Interface
-
-    // Legacy
-	//如果是true，则不允许在名称首部和尾部加下划线
-    "nomen"         : false,    // true: Prohibit dangling `_` in variables
-	//如果是true，则在一个函数中只能出现一次var
-    "onevar"        : false,    // true: Allow only one `var` statement per function
-	//如果是true，则在遇到第一个错误的时候就终止
-    "passfail"      : false,    // true: Stop on first error
-	//如果是true，则需要严格使用空格用法。
-    "white"         : false,    // true: Check against strict whitespace and indentation rules
-
-    // Custom Globals
-    "globals"       : {
-		"define": true,
-		"module": true,
-		"exports": true
-		
-		}        // additional predefined global variables
+	"predef": [
+		"seajs",
+		"define",
+		"require",
+		"exports",
+		"module",
+		"$",
+		"jQuery"
+	],
+	
+	"globals": {
+	    "cnzz": true,
+	    "log": true
+  }
 }

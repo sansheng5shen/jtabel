@@ -44,12 +44,12 @@ a:hover, a:active { outline:0; }
 .widget-calender-container .widget-calendar-main-week .leftWeek li.selected{background-color:#b5b5b5;color:#fff;}
 .widget-calender-container .widget-calendar-main-week .rightWeek{float:left;height: 206px;}
 .widget-calender-container .widget-calendar-left .widget-calendar-prevYearBtn{border:1px solid #b6b6b6;width:24px;height: 24px;margin-bottom:4px;}
-.widget-calender-container .widget-calendar-left .widget-calendar-prevYearBtn .prevYearBtn{width:24px;height: 24px;background:url("calendar24.png") 0 0 transparent;display:inline-block;}
+.widget-calender-container .widget-calendar-left .widget-calendar-prevYearBtn .prevYearBtn{width:24px;height: 24px;background:url("calendar.png") 0 0 transparent;display:inline-block;}
 .widget-calender-container .widget-calendar-left .hovered .prevYearBtn{background-position: 0px -25px;}
 .widget-calender-container .widget-calendar-left .selected .prevYearBtn{background-position: 0px -50px;}
 .widget-calender-container .widget-calendar-left .disabled .prevYearBtn{background-position: 0px -75px;cursor: default;}
 .widget-calender-container .widget-calendar-left .widget-calendar-prevMonthBtn{border:1px solid #b6b6b6;width:24px;height: 169px;background-color:#ffffff;cursor: pointer;}
-.widget-calender-container .widget-calendar-left .widget-calendar-prevMonthBtn .prevBtn{width:24px;height: 24px;background:url("calendar24.png") -24px 0 transparent;display:inline-block;margin-top:73px;}
+.widget-calender-container .widget-calendar-left .widget-calendar-prevMonthBtn .prevBtn{width:24px;height: 24px;background:url("calendar.png") -24px 0 transparent;display:inline-block;margin-top:73px;}
 .widget-calender-container .widget-calendar-left .hovered{background-color:#EFEFEF;}
 .widget-calender-container .widget-calendar-left .hovered .prevBtn{background-position: -24px -25px;}
 .widget-calender-container .widget-calendar-left .selected{background-color:#DFDFDF;}
@@ -57,12 +57,12 @@ a:hover, a:active { outline:0; }
 .widget-calender-container .widget-calendar-left .disabled{background-color:#F7F7F7;cursor: default;}
 .widget-calender-container .widget-calendar-left .disabled .prevBtn{background-position: -24px -75px;cursor: default;}
 .widget-calender-container .widget-calendar-right .widget-calendar-nextYearBtn{border:1px solid #b6b6b6;width:24px;height: 24px;margin-bottom:4px;}
-.widget-calender-container .widget-calendar-right .widget-calendar-nextYearBtn .nextYearBtn{width:24px;height: 24px;background:url("calendar24.png") -72px 0 transparent;display:inline-block;}
+.widget-calender-container .widget-calendar-right .widget-calendar-nextYearBtn .nextYearBtn{width:24px;height: 24px;background:url("calendar.png") -72px 0 transparent;display:inline-block;}
 .widget-calender-container .widget-calendar-right .hovered .nextYearBtn{background-position: -72px -25px;}
 .widget-calender-container .widget-calendar-right .selected .nextYearBtn{background-position: -72px -50px;}
 .widget-calender-container .widget-calendar-right .disabled .nextYearBtn{background-position: -72px -75px;cursor: default;}
 .widget-calender-container .widget-calendar-right .widget-calendar-nextMonthBtn{border:1px solid #b6b6b6;width:24px;height: 169px;background-color:#ffffff;cursor: pointer;}
-.widget-calender-container .widget-calendar-right .widget-calendar-nextMonthBtn .nextBtn{width:24px;height: 24px;background:url("calendar24.png") -48px 0 transparent;display:inline-block;margin-top:73px;}
+.widget-calender-container .widget-calendar-right .widget-calendar-nextMonthBtn .nextBtn{width:24px;height: 24px;background:url("calendar.png") -48px 0 transparent;display:inline-block;margin-top:73px;}
 .widget-calender-container .widget-calendar-right .hovered{background-color:#EFEFEF;}
 .widget-calender-container .widget-calendar-right .hovered .nextBtn{background-position: -48px -25px;}
 .widget-calender-container .widget-calendar-right .selected{background-color:#DFDFDF;}
