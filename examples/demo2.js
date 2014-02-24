@@ -8,7 +8,13 @@ $(function(){
             id: 'inputId1',
             panelCounts: 3
         }
-        new Calendar(opt);
+        calendar = new Calendar(opt);
+        calendar.containerNode.on("calendar.event.submit", function(e, selectDate){
+           alert(selectDate) 
+        });
+        calendar.containerNode.on("calendar.event.cancle", function(e, selectDate){
+           alert(selectDate) 
+        });
     }
     
     function compare(){

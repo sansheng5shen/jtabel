@@ -528,12 +528,13 @@ Calendar.prototype = {
             });
             if (!errored) {
                 that.containerNode.trigger("calendar.event.hide");
-                that.containerNode.trigger("calendar.event.submit", [that._dateFormater(that.sdf.getArrayDateByString(that.selectDate))]);
+                that.containerNode.trigger("calendar.event.submit", [ that._getFormateSelectDate() ]);
             }
         });
         that.cancleEl.off("click").on("click", function() {
             that.selectDate = that._selectDate;
             that.containerNode.trigger("calendar.event.hide");
+            that.containerNode.trigger("calendar.event.cancle", [ that._getFormateSelectDate() ]);
         });
         if (!that.isClickDocClose) {
             $(document).on("click", function(e) {
@@ -542,6 +543,7 @@ Calendar.prototype = {
                 var condition2 = $.contains(that.containerNode[0], target[0]);
                 if (!condition1 && !condition2) {
                     that.containerNode.trigger("calendar.event.hide");
+                    that.containerNode.trigger("calendar.event.clickDocClose");
                 }
             });
         }
@@ -605,6 +607,15 @@ Calendar.prototype = {
         var that = this;
         return that.sdf.getYears(rDate) + that.sdf.separator + that.sdf.formatNum(that.sdf.getMonths(rDate)) + that.sdf.separator + that.sdf.formatNum(that.sdf.getDay(rDate));
     },
+    _getFormateSelectDate: function() {
+        var that = this, selectDate;
+        if (that.selectDate.length === 2) {
+            selectDate = that._dateFormater(that.selectDate[0]) + that.sdf.date2Separator + that._dateFormater(that.selectDate[1]);
+        } else {
+            selectDate = that._dateFormater(that.selectDate);
+        }
+        return selectDate;
+    },
     _triggerInputEvent: function() {
         var that = this, triggerInputEl = that.triggerInputEl, minStime = that.sdf.getStime(that.minDate), maxStime = that.sdf.getStime(that.maxDate);
         if (that.isReadOnly) {
@@ -645,6 +656,7 @@ Calendar.prototype = {
                         that.selectDate = that.sdf.getArrayDateByString(val);
                         that._randDateSelect();
                     }
+                    that.containerNode.trigger("calendar.event.triggerInput.keyup");
                 }
             },
             focus: function() {

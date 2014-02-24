@@ -72,24 +72,24 @@ input 节点id
 #### language	`object`
 
 ````javascript
-            lg = {
-                to: "至",
-                closeBtnTxt: "关闭",
-                okBtnTxt: "确定",
-                defineTxt: "自定义",
-                weekTxt: [ "日", "一", "二", "三", "四", "五", "六" ],
-                yearTxt: "年",
-                monthTxt: "月",
-                separator: "-",
-                errorTip: {
-                    ET1: "时间格式不正确",
-                    ET2: "开始时间格式不正确",
-                    ET3: "结束时间格式不正确",
-                    ET4: "开始时间不能小于最小时间",
-                    ET5: "结束时间不能大于最大时间",
-                    ET6: "最小时间不能大于最大时间"
-                }
-            };
+    lg = {
+        to: "至",
+        closeBtnTxt: "关闭",
+        okBtnTxt: "确定",
+        defineTxt: "自定义",
+        weekTxt: [ "日", "一", "二", "三", "四", "五", "六" ],
+        yearTxt: "年",
+        monthTxt: "月",
+        separator: "-",
+        errorTip: {
+            ET1: "时间格式不正确",
+            ET2: "开始时间格式不正确",
+            ET3: "结束时间格式不正确",
+            ET4: "开始时间不能小于最小时间",
+            ET5: "结束时间不能大于最大时间",
+            ET6: "最小时间不能大于最大时间"
+        }
+    };
 ````
 
 
@@ -146,10 +146,61 @@ input 节点id
 ## 事件回调,以下为事件回调名字   
       
 日历显示前
+
 #### 'calendar.event.showbcb' `Function`
+
 日历显示后
+
 #### 'calendar.event.showcb' `Function`
+
 日历隐藏前
+
 #### 'calendar.event.hidebcb' `Function`
+
 日历隐藏后
+
 #### 'calendar.event.hidecb' `Function`
+
+日历提交
+
+#### 'calendar.event.submit' `Function`
+
+日历取消
+
+#### 'calendar.event.cancle' `Function`
+
+修改输入框
+#### 'calendar.event.triggerInput.keyup' `Function`
+
+点击文档隐藏日历
+#### 'calendar.event.clickDocClose' `Function`
+
+月向未来
+#### 'calendar.event.nextMonth' `Function`
+
+年向未来
+#### 'calendar.event.nextYear' `Function`
+
+月向过去
+#### 'calendar.event.prevMonth' `Function`
+
+年向过去
+#### 'calendar.event.prevYear' `Function`
+
+日期点击
+#### 'calendar.event.aTimeClick' `Function`
+
+开始时间小于最小时间
+#### 'calendar.event.triggerInput.st_min' `Function`
+
+结束时间小于最小时间
+#### 'calendar.event.triggerInput.et_min' `Function`
+
+开始时间大于最大时间
+#### 'calendar.event.triggerInput.st_max' `Function`
+
+结束时间大于最大时间
+#### 'calendar.event.triggerInput.et_max' `Function`
+
+结束时间小于开始时间
+#### 'calendar.event.triggerInput.et_st' `Function`

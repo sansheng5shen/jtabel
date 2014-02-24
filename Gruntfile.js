@@ -11,7 +11,7 @@ module.exports = function(grunt) {
             build: [ "./dist/" ]
         },
         nodeunit: {
-            all: [ "test/sdf.js" ]
+            all: [ "tests/sdf.js" ]
         },
         watch: {
             files: [ "./src/core.js", "./src/sdf.js" ],
