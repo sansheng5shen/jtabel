@@ -10,6 +10,9 @@ module.exports = function(grunt) {
         clean: {
             build: [ "./dist/" ]
         },
+        nodeunit: {
+            all: [ "test/sdf.js" ]
+        },
         watch: {
             files: [ "./src/core.js", "./src/sdf.js" ],
             tasks: "default"
@@ -90,5 +93,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.registerTask("default", [ "clean", "uglify", "concat", "copyCss" ]);
+    grunt.loadNpmTasks("grunt-contrib-nodeunit");
+    grunt.registerTask("default", [ "clean", "nodeunit", "uglify", "concat", "copyCss" ]);
 };
